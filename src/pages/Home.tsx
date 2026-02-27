@@ -35,7 +35,6 @@ const Home = () => {
   const [sortBy, setSortBy] = useState("newest");
 
   const debouncedSearch = useDebounce(filters.search, 500);
-
   useEffect(() => {
     const loadJobs = async () => {
       if (useInfinite && page > 1) {
@@ -184,12 +183,19 @@ const Home = () => {
             </>
           ) : (
             <>
-              <JobList jobs={processedJobs} />
-              <Pagination
-                page={page}
-                setPage={setPage}
-                totalPages={totalPages}
-              />
+              {!useInfinite && (
+                <>
+                  <JobList jobs={processedJobs} />
+
+                  {processedJobs.length > 0 && (
+                    <Pagination
+                      page={page}
+                      setPage={setPage}
+                      totalPages={totalPages}
+                    />
+                  )}
+                </>
+              )}
             </>
           )}
         </>

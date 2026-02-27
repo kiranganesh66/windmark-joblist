@@ -12,6 +12,7 @@ const JobCard = ({ job }: Props) => {
 
       <div className="flex justify-between items-start mb-2">
         <h2 className="text-lg font-semibold">{job.title}</h2>
+
         {job.is_remote_work === 1 && (
           <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
             Remote
@@ -22,6 +23,7 @@ const JobCard = ({ job }: Props) => {
       <p className="text-sm text-zinc-600 dark:text-zinc-400">
         {job.company} • {job.location}
       </p>
+                <p className="text-sm"> <span className="font-bold text-zinc-500">Created at:</span> {job.created_at}</p>
 
       <p className="mt-2 text-sm line-clamp-2">
         {job.description}
@@ -37,7 +39,7 @@ const JobCard = ({ job }: Props) => {
       </div>
 
       <div className="mt-2 text-xs text-zinc-500">
-        Category: {job.job_category}
+       <span className="font-bold">Category:</span>  {job.job_category}
       </div>
 
     </div>
